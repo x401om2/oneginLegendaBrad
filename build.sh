@@ -16,7 +16,7 @@ g++ -D_DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ \
     -fsized-deallocation -fstack-protector -fstrict-overflow \
     -fno-omit-frame-pointer -Wlarger-than=8192 -fPIE -Werror=vla \
     -fsanitize=address,undefined \
-    stringFunctions.cpp main.cpp \
+    stringFunctions.cpp main.cpp io.cpp workWithPointers.cpp \
     -o onegin
 
 if [ $? -eq 0 ]; then

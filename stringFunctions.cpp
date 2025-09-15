@@ -200,4 +200,3 @@ size_t maxLen(FILE* stream)
 
     return maxLenght;
 }
-//

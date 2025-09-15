@@ -1,20 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "stringFunctions.h"
+#include "io.h"
+#include "workWithPointers.h"
 
-//*array[0]
+const long int ebanieElementi = 176813;        //без EOF пока что
+const int countOfStrings = 5313;
 
-const int ebanieElementi = 186124;          //без EOF пока что
-
+//пох на неналичие \0
+//количество строк 5313 длину строки определяем через разность соседних указателей
 
 int main()
 {
-    FILE *file = fopen("text.txt", "r");
-
-    char array[15][42] = {};       // инициализируем все нулями
-    char temp[42] = {0}; // инициализируется нулевыми значениями при создании чтобы можно было заменить строку макс размера
-
-    long int ebanutayaString[ebanieElementi] = {0};
+    FILE *file = fopen("oneg.txt", "r");
 
     if (file == NULL)
     {
@@ -22,10 +20,23 @@ int main()
         return -1;
     }
 
-    for (int i = 0; i <= ebanieElementi; i++)
-    {
-        ebanutayaString[i] = getc(file);
-    }
+    //char array[15][42] = {};       // инициализируем все нулями
+    //char temp[42] = {0};           // инициализируется нулевыми значениями при создании чтобы можно было заменить строку макс размера
+
+    char ebanutayaString [ebanieElementi] = {0};
+
+    inputElementsToBigSmoke(ebanieElementi, ebanutayaString, file);
+
+    char* pointersToLines[countOfStrings] = {NULL};     //если 1* и [] - когда передаем значение в ф-ию то будем писать char**
+
+    getStringPointers(ebanutayaString, pointersToLines, ebanieElementi);
+
+    outputFromPointers(countOfStrings, pointersToLines);
+
+    fclose(file);
+    return 0;       // полезно чтобы после каждой проги возвращался 0
+
+
     // int count = countOfLines(file);
     // printf("%d\n", count);
 
@@ -42,14 +53,6 @@ int main()
     // strswap(temp, array[0], array[1]);
     // strswapLetter(array[0], array[1]);
     // strswapInt(array[0], array[1]);
-
-    // for (int j = 0; j <= 14; j++)
-    // {
-    //     printf("%s", array[j]);
-    // }
-
-    fclose(file);
-    return 0;       // полезно чтобы после каждой проги возвращался 0
 }
 
 

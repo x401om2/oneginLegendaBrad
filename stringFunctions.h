@@ -16,4 +16,3 @@ size_t maxLen(FILE* stream);
 int countOfLines(FILE* stream);
 
 #endif
-//
