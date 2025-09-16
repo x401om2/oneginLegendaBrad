@@ -3,12 +3,10 @@
 #include "stringFunctions.h"
 #include "io.h"
 #include "workWithPointers.h"
+#include "sorting.h"
 
-const long int ebanieElementi = 176813;        //без EOF пока что
+const long int ebanieElementi = 176813;        //c пом ф-ий из strFunctions посчитано
 const int countOfStrings = 5313;
-
-//пох на неналичие \0
-//количество строк 5313 длину строки определяем через разность соседних указателей
 
 int main()
 {
@@ -20,40 +18,25 @@ int main()
         return -1;
     }
 
-    //char array[15][42] = {};       // инициализируем все нулями
-    //char temp[42] = {0};           // инициализируется нулевыми значениями при создании чтобы можно было заменить строку макс размера
-
     char ebanutayaString [ebanieElementi] = {0};
 
     inputElementsToBigSmoke(ebanieElementi, ebanutayaString, file);
+
+    changing(ebanieElementi, ebanutayaString);
 
     char* pointersToLines[countOfStrings] = {NULL};     //если 1* и [] - когда передаем значение в ф-ию то будем писать char**
 
     getStringPointers(ebanutayaString, pointersToLines, ebanieElementi);
 
-    outputFromPointers(countOfStrings, pointersToLines);
+    // bubbleSortPolnoeGovnoNapisal(pointersToLines, countOfStrings);
+
+    qsort(pointersToLines, countOfStrings, sizeof(char*), (int (*)(const void*, const void*))compareStringReversed);
+
+    // outputFromPointers(countOfStrings, pointersToLines);
+    simpleOutput(pointersToLines, countOfStrings);
 
     fclose(file);
-    return 0;       // полезно чтобы после каждой проги возвращался 0
 
+    return 0;
 
-    // int count = countOfLines(file);
-    // printf("%d\n", count);
-
-    //rewind(file);       // потому что файл уже был прочитан и указатель на файл находился в конце
-
-    // size_t maxLenOfString = maxLen(file) + 1;
-    // printf("%zu", maxLenOfString);
-
-    // for (int i = 0; i <= 14; i++)
-    // {
-    //     fgets(array[i], 42, file);
-    // }
-
-    // strswap(temp, array[0], array[1]);
-    // strswapLetter(array[0], array[1]);
-    // strswapInt(array[0], array[1]);
 }
-
-
-

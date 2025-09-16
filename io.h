@@ -5,6 +5,7 @@
 
 void outputFromPointers(int countOfStrings, char** pointersToLines);
 void outputForOneSymbol(long int ebanieElementi, char* ebanutayaString);
+void simpleOutput(char** pointersToLines, int countOfLines);
 
 void inputElementsToBigSmoke(long int ebanieElementi, char* ebanutayaString, FILE* file);
 

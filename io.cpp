@@ -30,3 +30,11 @@ void inputElementsToBigSmoke(long int ebanieElementi, char* ebanutayaString, FIL
         ebanutayaString[i] = getc(file);
     }
 }
+
+void simpleOutput(char** pointersToLines, int countOfLines)
+{
+    for (int i = 0; i < countOfLines; i++)
+    {
+       printf("%s\n", pointersToLines[i]);
+    }
+}

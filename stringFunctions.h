@@ -9,6 +9,7 @@
 void strswapInt(char* strOne, char* strTwo);
 void strswap(char* temp, char* strOne, char* strTwo);
 void strswapLetter(char* firstLetter, char* secondLetter);
+void changing(long int ebanieElementi, char* ebanutayaString);
 
 ssize_t getlineMaximaKatkova(char** ptr_string, size_t* ptr_size, FILE* stream);
 

@@ -200,3 +200,14 @@ size_t maxLen(FILE* stream)
 
     return maxLenght;
 }
+
+void changing(long int ebanieElementi, char* ebanutayaString)
+{
+    for (int i = 0; i < ebanieElementi; i++)
+    {
+        if (ebanutayaString[i] == '\n')
+        {
+            ebanutayaString[i] = '\0';
+        }
+    }
+}
